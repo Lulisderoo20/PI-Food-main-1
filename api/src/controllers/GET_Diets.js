@@ -18,7 +18,7 @@ const getDiet = async(req, res) => {
                 }
             }
         }
-        const aux = await Diet.bulkCreate(dietas.map(diet => {
+        await Diet.bulkCreate(dietas.map(diet => {
             return {
                 name:diet
             }
