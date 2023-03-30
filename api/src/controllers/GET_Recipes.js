@@ -1,4 +1,4 @@
-const { Recipe } = require("../db.js");
+const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
 const db = require("../db.js");
 require("dotenv").config();
@@ -11,7 +11,11 @@ const getRecipe = async (req, res) => {
     );
     const { name } = req.query;
     const data = response.data.results;
-    const dbRecipe = await Recipe.findAll();
+    const dbRecipe = await Recipe.findAll({
+      include: {
+        model: Diet,
+      }
+    });
     console.log(dbRecipe);
     const finalArray = data.concat(dbRecipe);
     if (name) {

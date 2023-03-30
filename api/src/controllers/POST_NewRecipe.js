@@ -1,9 +1,8 @@
-const axios = require("axios");
-const { Recipe, Diet } = require("../db");
+const { Recipe } = require("../db");
 
 const postNewRecipe = async (req, res) => {
   try {
-    const { title, imagen, resumen, puntuacionSalud, pasoApaso } = req.body;
+    const { title, imagen, resumen, puntuacionSalud, pasoApaso, diets } = req.body;
     const post = await Recipe.create({
       title,
       imagen,
@@ -11,6 +10,7 @@ const postNewRecipe = async (req, res) => {
       puntuacionSalud,
       pasoApaso,
     });
+    await post.addDiets(diets)
     res.status(201).json(post);
   } catch (error) {
     res.status(500).json({ error: error.message });
