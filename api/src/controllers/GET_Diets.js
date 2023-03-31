@@ -4,7 +4,7 @@ require('dotenv').config();
 const {API_KEY} = process.env;
 
 
-const getDiet = async(req, res) => {
+const getDiet = async() => {
     try {
         const dietas = [];
         const response = await axios(
@@ -23,11 +23,10 @@ const getDiet = async(req, res) => {
                 name:diet
             }
         }), {ignoreDuplicates: true})
-        const allDiets = await Diet.findAll()
+        await Diet.findAll()
         //console.log(dietas)
-        res.status(200).json(allDiets)
     } catch (error) {
-        res.status(500).json({error: error.message})
+       return (error.message)
     }
 };
 

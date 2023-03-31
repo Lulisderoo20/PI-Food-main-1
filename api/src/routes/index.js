@@ -12,7 +12,6 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/recipe", getRecipe);
 router.get("/recipe/:idRecipe", getDetailRecipe);
-router.get("/diet", getDiet);
 router.post("/recipe", postNewRecipe);
 
 module.exports = router;
