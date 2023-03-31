@@ -1,0 +1,13 @@
+.landing{
+    background-image: url('https://th.bing.com/th/id/OIP.XTQLTQKpW7_2qor6FuSJtAHaE7?pid=ImgDet&rs=1');
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.container{
+    justify-content: center;
+    border-radius: 5px solid red;
+    margin-top: 30%;
+    flex-direction: row;
+}
