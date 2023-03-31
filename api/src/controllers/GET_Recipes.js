@@ -16,7 +16,6 @@ const getRecipe = async (req, res) => {
         model: Diet,
       }
     });
-    console.log(dbRecipe);
     const finalArray = data.concat(dbRecipe);
     if (name) {
       const filtered = finalArray.filter((e) =>
