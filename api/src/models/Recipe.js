@@ -17,19 +17,19 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
-      imagen: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      resumen: {
+      summary: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      puntuacionSalud: {
+      healthScore: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      pasoApaso: {
+      steps: {
         type: DataTypes.TEXT,
         allowNull: false,
       },

@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const { getRecipe } = require("../controllers/GET_Recipes");
-const { getDiet } = require("../controllers/GET_Diets");
 const { getDetailRecipe } = require("../controllers/GET_DetailRecipes");
 const { postNewRecipe } = require("../controllers/POST_NewRecipe");
 

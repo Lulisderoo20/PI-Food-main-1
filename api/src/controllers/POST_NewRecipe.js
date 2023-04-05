@@ -2,13 +2,14 @@ const { Recipe } = require("../db");
 
 const postNewRecipe = async (req, res) => {
   try {
-    const { title, imagen, resumen, puntuacionSalud, pasoApaso, diets } = req.body;
+    const { title, image, summary, healthScore, steps, diets } = req.body;
     const post = await Recipe.create({
       title,
-      imagen,
-      resumen,
-      puntuacionSalud,
-      pasoApaso,
+      image,
+      summary,
+      healthScore,
+      steps,
+      diets: diets.map(diet => diet.name)
     });
     await post.addDiets(diets)
     res.status(201).json(post);

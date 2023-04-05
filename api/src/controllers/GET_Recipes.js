@@ -1,6 +1,5 @@
 const { Recipe, Diet } = require("../db.js");
 const axios = require("axios");
-const db = require("../db.js");
 require("dotenv").config();
 const { API_KEY } = process.env;
 
@@ -10,13 +9,34 @@ const getRecipe = async (req, res) => {
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
     );
     const { name } = req.query;
-    const data = response.data.results;
+    const {results} = response.data;
+    const apiRecipe = results.map(rec => {
+      return {
+        id: rec.id,
+        title: rec.title,
+        image: rec.image,
+        summary: rec.summary,
+        healthScore: rec.healthScore,
+        steps: rec.analyzedInstructions,
+        diets: rec.diets
+      }
+    })
     const dbRecipe = await Recipe.findAll({
       include: {
         model: Diet,
       }
-    });
-    const finalArray = data.concat(dbRecipe);
+    }).then(data => data.map(rec => {
+      return {
+        id: rec.id,
+        title: rec.title,
+        image: rec.image,
+        summary: rec.summary,
+        healthScore: rec.healthScore,
+        steps: rec.steps,
+        diets: rec.diets.map(diet => diet.name)
+      }
+    }))
+    const finalArray = apiRecipe.concat(dbRecipe);
     if (name) {
       const filtered = finalArray.filter((e) =>
         e.title.toLowerCase().includes(name.toLowerCase())

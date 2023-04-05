@@ -24,7 +24,6 @@ const getDiet = async() => {
             }
         }), {ignoreDuplicates: true})
         await Diet.findAll()
-        //console.log(dietas)
     } catch (error) {
        return (error.message)
     }

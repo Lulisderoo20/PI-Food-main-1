@@ -3,7 +3,6 @@ import {
   FILTER,
   ORDER,
   GET_ALL_RECIPES,
-  GET_DETAIL_RECIPE,
 } from "./actions-types";
 import axios from "axios";
 
@@ -28,16 +27,6 @@ export const getAllRecipes = () => {
             dispatch({type: GET_ALL_RECIPES, payload: response.data})
         } catch (error) {
             alert('No se encontraron recetas')
-        }
-    }
-};
-export const getDetailRecipe = (idRecipe) => {
-    return async function (dispatch){
-        try {
-            const response = await axios.get(`http://localhost:3001/recipe/${idRecipe}`);
-            dispatch({type: GET_DETAIL_RECIPE, payload: response.data})
-        } catch (error) {
-            alert('No hemos encontrado la receta con el ID solicitado')
         }
     }
 };
