@@ -3,7 +3,6 @@ const axios = require('axios');
 require('dotenv').config();
 const {API_KEY} = process.env;
 
-
 const getDiet = async() => {
     try {
         const dietas = [];
@@ -23,10 +22,19 @@ const getDiet = async() => {
                 name:diet
             }
         }), {ignoreDuplicates: true})
-        await Diet.findAll()
+        const dbRes = await Diet.findAll()
+        return dbRes;
     } catch (error) {
        return (error.message)
     }
 };
 
-module.exports = { getDiet };
+const dietController = async(req, res) => {
+    try {
+        const dbRes = await getDiet()
+        res.status(200).json(dbRes)       
+    } catch (error) {
+        res.status(400).json({err: error.message})
+    }
+}
+module.exports = { getDiet, dietController };

@@ -23,8 +23,9 @@ const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  getDiet();
   server.listen(3001, () => {
+    getDiet();
+    console.log('Base de datos cargada!! 😎');
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
