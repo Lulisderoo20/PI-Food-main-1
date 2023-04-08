@@ -1,4 +1,4 @@
-const { Recipe } = require("../db");
+const { Recipe, Diet } = require("../db");
 require("dotenv").config();
 const { API_KEY } = process.env;
 const axios = require("axios");
@@ -25,11 +25,22 @@ const getDetailRecipe = async (req, res) => {
       };
     } else {
       //Si es alfanumérico (UUID), busca en la DB
-      data = await Recipe.findByPk(idRecipe);
+      data = await Recipe.findOne({
+        where: {
+          id:idRecipe
+        },
+        include: {
+          model: Diet,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        }
+      })
     }
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json("ID no existente");
+    res.status(500).json(error.message);
   }
 };
 

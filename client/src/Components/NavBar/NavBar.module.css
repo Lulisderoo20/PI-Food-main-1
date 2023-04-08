@@ -1,0 +1,10 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 1%;
+}
+.nav img {
+    width: 100px;
+    height: 100px;
+}

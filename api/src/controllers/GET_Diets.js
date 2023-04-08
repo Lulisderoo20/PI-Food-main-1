@@ -21,9 +21,8 @@ const getDiet = async() => {
             return {
                 name:diet
             }
-        }), {ignoreDuplicates: true})
-        const dbRes = await Diet.findAll()
-        return dbRes;
+        }), {ignoreDuplicates: true});
+        console.log('Base de datos cargada!! 😎');
     } catch (error) {
        return (error.message)
     }
@@ -32,9 +31,17 @@ const getDiet = async() => {
 const dietController = async(req, res) => {
     try {
         const dbRes = await getDiet()
+        res.status(200).json({msg: 'Dietas cargadas'})       
+    } catch (error) {
+        res.status(400).json({err: error.message})
+    }
+}
+const getDietsDB = async (req, res) => {
+    try {
+        const dbRes = await Diet.findAll()
         res.status(200).json(dbRes)       
     } catch (error) {
         res.status(400).json({err: error.message})
     }
 }
-module.exports = { getDiet, dietController };
+module.exports = { getDiet, dietController, getDietsDB };

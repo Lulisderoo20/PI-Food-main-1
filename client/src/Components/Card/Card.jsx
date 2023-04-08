@@ -1,5 +1,7 @@
 import styles from './Card.module.css'
 import { useNavigate } from 'react-router-dom'
+
+
 export default function Card (props){
     const navigate = useNavigate();
     const toDetail = () => {
@@ -9,15 +11,15 @@ export default function Card (props){
     return (
         <div key={props.id} onClick={toDetail} className={styles.card}>
             <img src={image} alt={name} className={styles.image}/>
-            <h2>{name}</h2>
+            <h3>{name}</h3>
             <div className={styles.divData}>
-            <h4>{diets ? diets.map((diet, i) => {
+            {diets?.map((diet, i) => {
                 return (
                     <div key={i}>
-                        <h4>{diet}</h4>
+                        <h4>{diet.charAt(0).toUpperCase() + diet.slice(1)}</h4>
                     </div>
                 )
-            }): null}</h4>
+            })}
             </div>
         </div>
     )

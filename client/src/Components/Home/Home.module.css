@@ -6,3 +6,7 @@
     grid-gap: 20px;
     align-items: stretch;
 }
+
+.loader {
+    display: flex;
+}
