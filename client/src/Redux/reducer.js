@@ -13,8 +13,8 @@ import {
 
 const initialState = {
   myRecipes: [],
-  //queryRecipes: [],
-  filteredRecipes: [],
+  allRecipes: [],
+  //filteredRecipes: [],
   loading: false,
   detail: {},
   diets: [],
@@ -30,11 +30,13 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         myRecipes: [...state.myRecipes, payload],
+        allRecipes: [...state.allRecipes, payload]
       };
     case GET_ALL_RECIPES:
       return {
         ...state,
         myRecipes: payload,
+        allRecipes: payload
       };
     case GET_QUERY_RECIPE:
       return {
@@ -52,31 +54,31 @@ const reducer = (state = initialState, { type, payload }) => {
         detail: payload,
       };
     case FILTER_BY_DIETS:
-      const allRecipesFiltered = state.myRecipes.filter(
+      const allRecipesFiltered = state.allRecipes.filter(
         (recipe) => recipe.diets.includes(payload)
       );
       return {
         ...state,
-        filteredRecipes: allRecipesFiltered,
+        myRecipes: allRecipesFiltered,
       };
     case ALPHABETIC_ORDER:
       return {
         ...state,
         myRecipes:
-          payload === "Ascendente"
-            ? state.myRecipes.sort((a, b) => (a.name < b.name ? -1 : 1))
-            : state.myRecipes.sort((a, b) => (a.name > b.name ? -1 : 1)),
+          payload === "A-Z"
+            ? state.myRecipes.sort((a, b) => a.title.localeCompare(b.title))
+            : state.myRecipes.sort((a, b) => b.title.localeCompare(a.title)),
       };
     case HEALTH_SCORE_ORDER:
       return {
         ...state,
         myRecipes:
-          payload === "Menor a Mayor"
+          payload === "Ascendente"
             ? state.myRecipes.sort((a, b) => (a.healthScore < b.healthScore ? -1 : 1))
             : state.myRecipes.sort((a, b) => (a.healthScore > b.healthScore ? -1 : 1)),
       };
     case FILTER_BY_ORIGIN:
-      const filtered = state.myRecipes.filter((recipe) => {
+      const filtered = state.allRecipes.filter((recipe) => {
         const regExp = /^[0-9]+$/;
         if(payload === 'Api' && regExp.test(recipe.id)){
           return true;
@@ -88,7 +90,12 @@ const reducer = (state = initialState, { type, payload }) => {
       })
       return {
         ...state,
-        filteredRecipes: filtered
+        myRecipes: filtered
+      }
+    case "DELETE_FILTERS":
+      return{
+        ...state,
+        myRecipes: state.allRecipes
       }
     default:
       return { ...state };

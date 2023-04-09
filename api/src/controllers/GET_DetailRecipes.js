@@ -21,7 +21,11 @@ const getDetailRecipe = async (req, res) => {
         summary: api.summary,
         healthScore: api.healthScore,
         steps: api.instructions,
-        diets: api.diets,
+        diets: api.diets.map(diet => {
+          return {
+            name: diet
+          }
+        }),
       };
     } else {
       //Si es alfanumérico (UUID), busca en la DB

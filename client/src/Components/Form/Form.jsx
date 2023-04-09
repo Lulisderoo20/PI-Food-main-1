@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validation from "./validation";
-import { addRecipe, getDiets } from "../../Redux/actions";
+import { addRecipe } from "../../Redux/actions";
 
 export default function Form(props) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDiets());
-  }, [dispatch]);
   const { diets } = useSelector((state) => state);
   const [diet, setDiet] = useState([]);
   const [recipe, setRecipe] = useState({
@@ -51,10 +48,10 @@ export default function Form(props) {
         !errors.steps &&
         diet.length >= 1
         ) {
-          console.log(recipe);
           dispatch(addRecipe(recipe));
+          alert('✅Recipe created successfully!!✅')
         }else{
-          alert('Todos los campos deben estar completos')
+          alert('❌Todos los campos deben estar completos❌')
         }
       };
       const mapDiets = () => {
@@ -76,8 +73,13 @@ export default function Form(props) {
         }
       };
       const deleteDiet = (event) => {
-        event.preventDefault();
-        setDiet(diet.filter((d) => d !== event.target.value))
+        //event.preventDefault();
+        //const {value} = event.target;
+        setDiet(diet.filter((d) => d !== event))
+        setRecipe({
+          ...recipe,
+          diets: recipe.diets.filter(d => d !== event)
+        })
       };
       return (
     <div>
@@ -131,7 +133,7 @@ export default function Form(props) {
         <br />
         <label>Diets: </label>
         <select onChange={dietHandler} name="diets">
-          <option value="diets" disabled="disable">
+          <option disabled defaultValue='Choose your diets 🥰'>
             Choose your diets 🥰
           </option>
           {mapDiets()}
@@ -139,9 +141,7 @@ export default function Form(props) {
         {diet?.map((d, i) => {
           return (
             <div key={i}>
-              <button>{d}</button>
-              <button onClick={deleteDiet}>x</button>
-
+              <button type='button' onDoubleClick={() => deleteDiet(d)}>{d}</button>
             </div>
           )
         })}

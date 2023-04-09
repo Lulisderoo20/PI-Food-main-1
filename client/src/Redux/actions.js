@@ -101,3 +101,8 @@ export const healthScoreOrder = (score) => {
     payload: score,
   };
 };
+export const deleteFilters = () => {
+  return {
+    type: "DELETE_FILTERS"
+  }
+}
