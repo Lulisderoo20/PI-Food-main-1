@@ -15,7 +15,7 @@ import loader from "../../img/loader-unscreen.gif";
 import Paginado from "../Paginado/Paginado";
 
 export default function HomePage(props) {
-  const { myRecipes, loading, allRecipes, diets } = useSelector(
+  const { myRecipes, loading, diets } = useSelector(
     (state) => state
   );
   const dispatch = useDispatch();
