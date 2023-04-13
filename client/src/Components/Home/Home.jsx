@@ -45,11 +45,14 @@ export default function HomePage(props) {
     const { name, value } = event.target;
     if (name === "Diets") {
       dispatch(filterRecipeByDiets(value));
+      setPage(1)
     } else {
       dispatch(filterByOrigin(value));
+      setPage(1)
     }
     if(value === 'All'){
       dispatch(deleteFilters())
+      setPage(1)
     }
   };
   const orderHandler = (event) => {
