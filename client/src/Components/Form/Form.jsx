@@ -129,7 +129,7 @@ export default function Form(props) {
         <div className={styles.formDiets}>
           {diet?.map((d, i) => {
             return (
-              <button type="button" onDoubleClick={() => deleteDiet(d)}>
+              <button key={i} type="button" onDoubleClick={() => deleteDiet(d)}>
                 {d}
               </button>
             );

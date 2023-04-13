@@ -1,0 +1,36 @@
+.parrafo {
+    margin-left: 10%;
+    width: 1000px;
+    display: flex;
+    flex-direction: column
+}
+.parrafo h2 {
+    background-color: rgba(255, 228, 196, 0.568);
+    width: fit-content;
+    height: fit-content;
+    margin-top: 1%;
+    margin-left: 85%;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+}
+.parrafo img {
+    width: 580px;
+    height: 480px;
+    border-radius: 20px;
+    position: absolute;
+    box-shadow: 0 0 20px bisque;
+    margin-top: 3%;
+}
+.parrafo p {
+    width: 500px;
+    margin-left: 65%;
+    background-color:rgba(255, 228, 196, 0.705);
+    padding: 15px;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    text-shadow: 0 0 2px black;
+}

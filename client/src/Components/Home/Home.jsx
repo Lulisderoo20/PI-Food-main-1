@@ -63,7 +63,6 @@ export default function HomePage(props) {
   const reset = () => {
     dispatch(deleteFilters())
   }
-
   return (
     <div>
       <div className={styles.options}>
