@@ -28,6 +28,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     color:rgba(255, 228, 196, 0.8);
     margin-bottom: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container textarea {
     height: 100px;
@@ -35,6 +36,7 @@
     color:rgba(255, 228, 196, 0.8);
     resize: none;
     margin-bottom: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container input[type=range] {
     -webkit-appearance: none;
