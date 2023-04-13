@@ -8,7 +8,6 @@ import {
   GET_DETAIL_RECIPE,
   SET_LOADING,
   GET_DIETS,
-  GET_QUERY_RECIPE,
 } from "./actions-types";
 import axios from "axios";
 

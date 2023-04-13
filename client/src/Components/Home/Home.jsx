@@ -20,6 +20,9 @@ export default function HomePage(props) {
   );
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getAllRecipes());
+  }, [dispatch]);
+  useEffect(() => {
     if(!diets.length){
       dispatch(getDiets())
     }
@@ -29,9 +32,6 @@ export default function HomePage(props) {
   const startPage = finalPage - 9;
   const actualPage = myRecipes?.slice(startPage, finalPage)
   const totalPages = Math.ceil(myRecipes.length / 9);
-  useEffect(() => {
-    dispatch(getAllRecipes());
-  }, [dispatch]);
   const handlerPrevPage = () => {
     setPage(page - 1);
   };
@@ -66,15 +66,15 @@ export default function HomePage(props) {
 
   return (
     <div>
-      <div>
-        <select name="Origin" onChange={filterHandler}>
-          <option disabled defaultValue='Filter By'>Filter By</option>
+      <div className={styles.options}>
+        <select name="Origin" onChange={filterHandler} defaultValue='Filter By Origin'>
+          <option disabled >Filter By</option>
           <option value="All">All</option>
           <option value="Api">Api</option>
           <option value="DataBase">DataBase</option>
         </select>
-        <select name="Diets" onChange={filterHandler}>
-          <option disabled defaultValue='Filter By'>Filter By</option>
+        <select name="Diets" onChange={filterHandler} defaultValue='Filter By Diets'>
+          <option disabled >Filter By</option>
           <option value="All">All</option>
           {diets?.map((diet) => {
             return (
@@ -84,19 +84,20 @@ export default function HomePage(props) {
             );
           })}
         </select>
-        <select name="Alphabetic" onChange={orderHandler}>
-          <option disabled defaultValue='Order By'>Order By</option>
+        <select name="Alphabetic" onChange={orderHandler} defaultValue='Alphabetic Order'>
+          <option disabled >Order By</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
         </select>
-        <select name="HealthScore" onChange={orderHandler}>
-          <option disabled defaultValue='Order By'> Order By</option>
+        <select name="HealthScore" onChange={orderHandler} defaultValue='HealthScore Order'>
+          <option disabled > Order By</option>
           <option value="Ascendente">Ascendente</option>
           <option value="Descendente">Descendente</option>
         </select>
-      </div>
       <button onClick={reset}>Reset</button>
-      <div className={styles.contenedor}>
+      </div>
+      <br />
+      <div className={styles.paginado}>
         <Paginado
           totalPages={totalPages}
           page={page}
@@ -104,10 +105,15 @@ export default function HomePage(props) {
           nextPage={handlerNextPage}
           pageNumber={handlerPageNumber}
         />
-        <div></div>
+        </div>
+        <div className={styles.contenedor}>
         {loading ? (
-          <img src={loader} alt="Loading" />
-        ) : actualPage.length > 0 ? (
+          <div  className={styles.loader}>
+            <img src={loader} alt="Loading"/>
+          </div>
+          
+          ) 
+          : actualPage.length > 0 ? (
           actualPage.map((recipe) => {
             return (
               <div key={recipe.id}>
@@ -127,7 +133,7 @@ export default function HomePage(props) {
             it 😊
           </h2>
         )}
-      </div>
+        </div>
     </div>
   );
 }

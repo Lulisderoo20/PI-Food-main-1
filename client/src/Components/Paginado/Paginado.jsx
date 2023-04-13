@@ -7,17 +7,17 @@ export default function Paginado ({totalPages, page, prevPage, nextPage, pageNum
     }
     return (
         <div>
-            <button onClick={() => prevPage()} disabled={page <= 1}>◀◀</button>
+            <button onClick={() => prevPage()} disabled={page <= 1} className={styles.notSelected}>◀◀</button>
             {pages.length > 0
             &&
             pages.map(pag => (
                 <button 
                 onClick={() => pageNumber(pag)}
-                key={`page ${pag}`}>
+                key={`page ${pag}`} className={pag === page?styles.selected : styles.notSelected}>
                     {pag}
                 </button>
             ))}
-            <button onClick={() => nextPage()} disabled={page >= totalPages}>▶▶</button>
+            <button onClick={() => nextPage()} disabled={page >= totalPages} className={styles.notSelected}>▶▶</button>
         </div>
     )
 }

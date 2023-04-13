@@ -2,3 +2,73 @@
     display: flex;
     justify-content: center;
 }
+.container {
+    display: flex;
+    justify-content: center;
+}
+.container h1 {
+    color:  rgba(255, 228, 196, 0.9);
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-shadow: 0 0 2px white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50px;
+}
+.container img {
+    width: 550px;
+    height: 370px;
+    margin-left: 3%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px bisque;
+}
+.container h3 {
+    margin-right: 46%;
+    margin-left: 46%;
+    text-align: center;
+    background-color: rgba(255, 228, 196, 0.774);
+    border-radius: 10px;
+}
+.container p {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(255, 228, 196, 0.774);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.back{
+    background-color: rgba(121, 87, 68, 0.90);
+    color: bisque;
+    width: 50px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: .5%;
+    position: absolute;
+    transition: .3s;
+}
+.back:hover {
+    background-color: rgba(255, 228, 196, 0.774);
+    color: rgba(121, 88, 68, 0.774);
+}
+
+.hs {
+    margin-left: 15%;
+    font-size: 18px;
+    color: rgba(255, 228, 196, 0.774);
+}
+
+.diets {
+    padding-left: 10px;
+    margin-left: 40%;
+    margin-right: 40%;
+    color: rgba(255, 228, 196, 0.774);
+}
+.diets li {
+    justify-content: left;
+    font-size: larger;
+}

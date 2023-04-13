@@ -12,9 +12,8 @@ import {
 } from "./actions-types";
 
 const initialState = {
-  myRecipes: [],
   allRecipes: [],
-  //filteredRecipes: [],
+  myRecipes: [],
   loading: false,
   detail: {},
   diets: [],
