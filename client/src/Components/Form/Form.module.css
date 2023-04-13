@@ -29,6 +29,7 @@
     color:rgba(255, 228, 196, 0.8);
     margin-bottom: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
 }
 .container textarea {
     height: 100px;
@@ -37,6 +38,7 @@
     resize: none;
     margin-bottom: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
 }
 .container input[type=range] {
     -webkit-appearance: none;
