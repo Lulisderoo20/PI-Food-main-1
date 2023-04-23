@@ -8,6 +8,7 @@ import {
   GET_DETAIL_RECIPE,
   SET_LOADING,
   GET_DIETS,
+  CLEAN_STATES,
 } from "./actions-types";
 import axios from "axios";
 
@@ -104,4 +105,9 @@ export const deleteFilters = () => {
   return {
     type: "DELETE_FILTERS"
   }
-}
+};
+export const cleanStates = () => {
+  return {
+    type: CLEAN_STATES
+  }
+};

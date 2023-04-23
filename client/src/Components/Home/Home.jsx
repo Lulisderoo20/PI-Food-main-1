@@ -8,7 +8,8 @@ import {
   orderRecipeAlphabetic,
   healthScoreOrder,
   getDiets,
-  deleteFilters
+  deleteFilters,
+  cleanStates
 } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 import loader from "../../img/loader-unscreen.gif";
@@ -21,6 +22,7 @@ export default function HomePage(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllRecipes());
+    dispatch(cleanStates())
   }, [dispatch]);
   useEffect(() => {
     if(!diets.length){

@@ -8,3 +8,4 @@ export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 export const ALPHABETIC_ORDER = "ORDER";
 export const HEALTH_SCORE_ORDER = "HEALTH_SCORE_ORDER";
 export const SET_LOADING = "SET_LOADING";
+export const CLEAN_STATES = "CLEAN_STATES"

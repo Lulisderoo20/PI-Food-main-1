@@ -9,6 +9,7 @@ import {
   ALPHABETIC_ORDER,
   SET_LOADING,
   GET_DETAIL_RECIPE,
+  CLEAN_STATES,
 } from "./actions-types";
 
 const initialState = {
@@ -96,6 +97,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         myRecipes: state.allRecipes
       }
+    case CLEAN_STATES: 
+      return {
+        ...state,
+        detail: {}
+      };
     default:
       return { ...state };
   }
