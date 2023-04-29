@@ -46,9 +46,9 @@ const dietController = async(req, res) => {
         res.status(400).json({err: error.message})
     }
 }
+//y las funciones de arriba cuando se ejecutan? jej , estas de arriba cuando?
 
-
-const getDietsDB = async (req, res) => { // esta la deben importar en otro controller o algo asi   //pero donde se ejecuta?
+const getDietsDB = async (req, res) => { //  solo se ejecuta esta funcion...
     try { 
         const dbRes = await Diet.findAll()
         res.status(200).json(dbRes)       
