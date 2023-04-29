@@ -48,8 +48,8 @@ const dietController = async(req, res) => {
 }
 
 
-const getDietsDB = async (req, res) => {
-    try {
+const getDietsDB = async (req, res) => { // esta la deben importar en otro controller o algo asi   //pero donde se ejecuta?
+    try { 
         const dbRes = await Diet.findAll()
         res.status(200).json(dbRes)       
     } catch (error) {
