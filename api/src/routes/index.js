@@ -10,7 +10,7 @@ const { dietController, getDietsDB } = require("../controllers/GET_Diets");
 const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-//router.get("/getDiets", dietController)
+//router.get("/getDiets", dietController) //porqué esto esta comentado? 
 router.get("/recipe", getRecipe);
 router.get("/diets", getDietsDB);
 router.get("/recipe/:idRecipe", getDetailRecipe);
